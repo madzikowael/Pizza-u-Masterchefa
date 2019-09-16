@@ -108,6 +108,29 @@
     }
     initAccordion(){
       const thisProduct = this;
+
+      /* find the clickable trigger (the element that should react to clicking) */
+      let trigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+    /* START: click event listener to trigger */
+      trigger.addEventListener('click', function(){
+      /* prevent default action for event */
+        event.preventDefault();
+      /* toggle active class on element of thisProduct */
+        thisProduct.element.classList.toggle('active');
+      /* find all active products */
+        const activeProducts = querySelectorAll(select.all.menuProductActive);
+      /* START LOOP: for each active product */
+          for(let activeProduct of activeProducts){
+        /* START: if the active product isn't the element of thisProduct */
+            if(activeProduct !== thisProduct.element){
+          /* remove class active for the active product */
+              activeProduct.classList.toggle('active');
+        /* END: if the active product isn't the element of thisProduct */
+            }
+      /* END LOOP: for each active product */
+      }
+    /* END: click event listener to trigger */
+    });
     }
   }
 
