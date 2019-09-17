@@ -1,3 +1,4 @@
+import { format } from "util";
 /* global Handlebars, utils, dataSource */ // eslint-disable-line no-unused-vars
 
 {
@@ -137,7 +138,7 @@
       /* toggle active class on element of thisProduct */
         thisProduct.element.classList.toggle('active');
       /* find all active products */
-        const activeProducts = querySelectorAll(select.all.menuProductActive);
+        const activeProducts = document.querySelectorAll(select.all.menuProductActive);
       /* START LOOP: for each active product */
           for(let activeProduct of activeProducts){
         /* START: if the active product isn't the element of thisProduct */
@@ -176,6 +177,28 @@
 
     processOrder(){
       const thisProduct = this;
+
+      const formData = utils.serializeFormToObject(thisProduct.form);
+      console.log('formData', formData);
+
+      let price = thisProduct.data.price;
+
+      for(let paramId in thisProduct.data.params){
+        const param = thisProduct.data.params[paramId];
+
+        for(let optionId in param.options){
+          const option = param.options[optionId];
+
+          const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
+          if(optionSelected && !option.default){
+            price += option.price;
+            } else if(!optionSelected && option.default){
+              price -= option.price;
+            }
+        }
+      }
+
+      thisProduct.priceElem.innerHTML = price;
 
       console.log('processOrder', this.processOrder);
 
