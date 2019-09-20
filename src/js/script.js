@@ -188,10 +188,10 @@
 
         for(let optionId in param.options){
           const option = param.options[optionId];
-
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
-          if(optionSelected && !option.default){
-            price += option.price;
+
+            if(optionSelected && !option.default){
+              price += option.price;
             } else if(!optionSelected && option.default){
               price -= option.price;
             }
@@ -199,11 +199,9 @@
       }
 
       thisProduct.priceElem.innerHTML = price;
-
       console.log('processOrder', this.processOrder);
-
     }
   }
 
-  app.init();
+app.init();
 }
