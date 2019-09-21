@@ -195,11 +195,23 @@
             } else if(!optionSelected && option.default){
               price -= option.price;
             }
+
+            const classImages = '.' + paramId + '-' + optionId;
+            const optionImages = thisProduct.imageWrapper.querySelectorAll(classImages);
+
+            if(optionSelected){
+              for(let optionImage of optionImages){
+                optionImage.classList.add('active');
+              }
+            } else {
+              for(let optionImage of optionImages){
+                optionImage.classList.remove('active');
+              }
+            }
         }
       }
-
       thisProduct.priceElem.innerHTML = price;
-      console.log('processOrder', this.processOrder);
+
     }
   }
 
