@@ -56,8 +56,19 @@
     constructor(element){
       const thisWidget = this;
 
-      console.log('AmountWidger:', thisWidget);
+      thisWidget.getElements(element);
+
+      console.log('AmountWidget:', thisWidget);
       console.log('construktor argmunet:', element);
+    }
+    getElements(element){
+      const thisWidget = this;
+
+      thisWidget.element = element;
+      thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
+      thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
+      thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
+
     }
   }
 
@@ -102,6 +113,7 @@
         thisProduct.getElements();
         thisProduct.initAccordion();
         thisProduct.initOrderForm();
+        thisProduct.initAmountWidget();
         thisProduct.processOrder();
 
       console.log('newProduct', thisProduct);
@@ -230,6 +242,7 @@
 
       thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
     }
+
   }
 
 app.init();
