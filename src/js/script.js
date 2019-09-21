@@ -72,6 +72,17 @@
     }
   }
 
+  setValue(value){
+    const thisWidget = this;
+
+    const newValue = parseInt(value);
+
+    /* TODO: Add validation */
+
+    thisWidget.value = newValue;
+    thisWidget.input.value = thisWidget.value;
+  }
+
   const app = {
     initMenu: function(){
       const thisApp = this;
