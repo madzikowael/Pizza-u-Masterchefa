@@ -257,6 +257,12 @@
       thisWidget.value = newValue;
       thisWidget.input.value = thisWidget.value;
     }
+
+    initActions(){
+      thisWidget.input.addEventListener('change', setValue(value));t
+      thisWidget.linkDecrease.addEventListener('click', setValue.preventDefault(thisWidget.value - 1));
+      thisWidget.linkIncrease.addEventListener('click', setValue.preventDefault(thisWidget.value + 1));
+    }
   }
 
 
