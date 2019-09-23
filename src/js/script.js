@@ -51,7 +51,9 @@
   const templates = {
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
   };
+
   class Product{
+
     constructor(id, data){
       const thisProduct = this;
 
@@ -68,6 +70,7 @@
       console.log('newProduct', thisProduct);
     }
     renderInMenu(){
+
       const thisProduct = this;
 
       /* generate HTML based on template */
@@ -81,6 +84,7 @@
     }
 
     getElements(){
+
       const thisProduct = this;
 
       thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
@@ -99,6 +103,7 @@
     }
 
     initAccordion(){
+
       const thisProduct = this;
 
       /* find the clickable trigger (the element that should react to clicking) */
@@ -126,6 +131,7 @@
     }
 
     initOrderForm(){
+
       const thisProduct = this;
 
       thisProduct.form.addEventListener('submit', function(event){
@@ -182,8 +188,9 @@
             }
         }
       }
+
       /* multiply price by amount*/
-      price *= thisProduct.amountWidget.value;
+      price = thisProduct.amountWidget.value * price;
 
       thisProduct.priceElem.innerHTML = price;
 
@@ -196,6 +203,7 @@
       thisProduct.amountWidgetElem.addEventListener('updated', function(event){
         thisProduct.processOrder();
     })
+
   }
 
   }
@@ -231,7 +239,8 @@
 
       if(newValue != thisWidget.input.value && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMin){
         thisWidget.value = newValue;
-        thisWidget.announce()};
+        thisWidget.announce();
+      }
       thisWidget.input.value = thisWidget.value;
     }
 
