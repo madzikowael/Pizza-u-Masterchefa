@@ -52,36 +52,7 @@
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
   };
 
-  class AmountWidget{
-    constructor(element){
-      const thisWidget = this;
 
-      thisWidget.getElements(element);
-
-      console.log('AmountWidget:', thisWidget);
-      console.log('construktor argmunet:', element);
-    }
-    getElements(element){
-      const thisWidget = this;
-
-      thisWidget.element = element;
-      thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
-      thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
-      thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
-
-    }
-  }
-
-  setValue(value){
-    const thisWidget = this;
-
-    const newValue = parseInt(value);
-
-    /* TODO: Add validation */
-
-    thisWidget.value = newValue;
-    thisWidget.input.value = thisWidget.value;
-  }
 
   const app = {
     initMenu: function(){
@@ -255,6 +226,39 @@
     }
 
   }
+
+  class AmountWidget{
+    constructor(element){
+      const thisWidget = this;
+
+      thisWidget.getElements(element);
+      thisWidget.setValue(thisWidget.input.value);
+
+      console.log('AmountWidget:', thisWidget);
+      console.log('construktor argmunet:', element);
+    }
+    getElements(element){
+      const thisWidget = this;
+
+      thisWidget.element = element;
+      thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
+      thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
+      thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
+
+    }
+
+    setValue(value){
+      const thisWidget = this;
+
+      const newValue = parseInt(value);
+
+      /* TODO: Add validation */
+
+      thisWidget.value = newValue;
+      thisWidget.input.value = thisWidget.value;
+    }
+  }
+
 
 app.init();
 }
