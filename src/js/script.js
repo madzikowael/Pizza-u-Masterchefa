@@ -67,7 +67,6 @@
         thisProduct.initAmountWidget();
         thisProduct.processOrder();
 
-      console.log('newProduct', thisProduct);
     }
     renderInMenu(){
 
@@ -88,15 +87,15 @@
       const thisProduct = this;
 
       thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
-      //console.log('thisProduct.accordionTrigger', thisProduct.accordionTrigger);
+
       thisProduct.form = thisProduct.element.querySelector(select.menuProduct.form);
-      //console.log('thisProduct.form', thisProduct.form);
+
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
-      //console.log('thisProduct.formInputs', thisProduct.formInputs);
+
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
-      //console.log('thisProduct.cartButton', thisProduct.cartButton);
+
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
-      //console.log('thisProduct.priceElem', thisProduct.priceElem);
+
       thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
 
       thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
@@ -150,14 +149,13 @@
         thisProduct.processOrder();
       });
 
-      //console.log('initOrderForm:');
     }
 
     processOrder(){
+
       const thisProduct = this;
 
       const formData = utils.serializeFormToObject(thisProduct.form);
-      //console.log('formData', formData);
 
       let price = thisProduct.data.price;
 
@@ -197,6 +195,7 @@
     }
 
     initAmountWidget(){
+
       const thisProduct = this;
 
       thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
@@ -209,7 +208,9 @@
   }
 
   class AmountWidget{
+
     constructor(element){
+
       const thisWidget = this;
 
       thisWidget.getElements(element);
@@ -217,10 +218,10 @@
       thisWidget.setValue(thisWidget.input.value);
       thisWidget.initActions();
 
-      console.log('AmountWidget:', thisWidget);
-      console.log('construktor argmunet:', element);
     }
+
     getElements(element){
+
       const thisWidget = this;
 
       thisWidget.element = element;
@@ -231,12 +232,12 @@
     }
 
     setValue(value){
+
       const thisWidget = this;
 
       const newValue = parseInt(value);
 
       /* TODO: Add validation */
-
       if(newValue != thisWidget.input.value && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax){
         thisWidget.value = newValue;
         thisWidget.announce();
@@ -245,6 +246,7 @@
     }
 
     initActions(){
+
       const thisWidget = this;
 
       thisWidget.input.addEventListener('change', function(event){
@@ -261,10 +263,10 @@
       thisWidget.setValue(thisWidget.value + 1);
       });
 
-      console.log('initActions', thisWidget);
     }
 
     announce(){
+
       const thisWidget = this;
 
       const event = new Event('updated');
@@ -273,10 +275,10 @@
   }
 
   const app = {
-    initMenu: function(){
-      const thisApp = this;
 
-      //console.log('thisApp.data', thisApp.data);
+    initMenu: function(){
+
+      const thisApp = this;
 
       for(let productData in thisApp.data.products){
         new Product(productData, thisApp.data.products[productData]);
@@ -284,18 +286,15 @@
     },
 
     initData: function(){
+
       const thisApp = this;
 
       thisApp.data = dataSource;
     },
 
     init: function(){
+
       const thisApp = this;
-      //console.log('*** App starting ***');
-      //console.log('thisApp:', thisApp);
-      //console.log('classNames:', classNames);
-      //console.log('settings:', settings);
-      //console.log('templates:', templates);
 
       thisApp.initData();
       thisApp.initMenu();
