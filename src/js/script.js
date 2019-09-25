@@ -237,7 +237,7 @@
 
       /* TODO: Add validation */
 
-      if(newValue != thisWidget.input.value && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMin){
+      if(newValue != thisWidget.input.value && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax){
         thisWidget.value = newValue;
         thisWidget.announce();
       }
@@ -256,7 +256,7 @@
         thisWidget.setValue(thisWidget.value - 1);
       });
 
-      thisWidget.linkIncrease.addEventListener('clicked', function(){
+      thisWidget.linkIncrease.addEventListener('click', function(){
       event.preventDefault();
       thisWidget.setValue(thisWidget.value + 1);
       });
@@ -268,7 +268,7 @@
       const thisWidget = this;
 
       const event = new Event('updated');
-      thisWidget.element.dispatch(event);
+      thisWidget.element.dispatchEvent(event);
     }
   }
 
