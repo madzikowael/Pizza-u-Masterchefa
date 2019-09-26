@@ -174,6 +174,7 @@
 
       thisProduct.cartButton.addEventListener('click', function(event){
         event.preventDefault();
+        thisProduct.addToCart();
         thisProduct.processOrder();
       });
 
@@ -229,10 +230,14 @@
       thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
       thisProduct.amountWidgetElem.addEventListener('updated', function(event){
         thisProduct.processOrder();
-    })
+      })
+    }
 
-  }
+    addToCart(){
+      const thisProduct = this;
 
+      app.card.add(thisProduct);
+    }
   }
 
   class AmountWidget{
@@ -330,6 +335,12 @@
       thisCart.dom.toggleTrigger.addEventListener('click', function(event){
       thisCart.dom.wrapper.classList.toggle('active');
       });
+    }
+
+    add(menuProduct){
+      //const thisCart = this;
+
+      console.log('adding product', menuProduct);
     }
   }
   const app = {
