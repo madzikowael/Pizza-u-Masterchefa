@@ -81,7 +81,6 @@
   };
 
   class Product{
-
     constructor(id, data){
       const thisProduct = this;
 
@@ -101,9 +100,9 @@
       const thisProduct = this;
 
       /* generate HTML based on template */
-      const generateHTML = templates.menuProduct(thisProduct.data);
+      const generatedHTML = templates.menuProduct(thisProduct.data);
       /* create element using utils.createElementFromHTML */
-      thisProduct.element = utils.createDOMFromHTML(generateHTML);
+      thisProduct.element = utils.createDOMFromHTML(generatedHTML);
       /* find menu container */
       const menuContainer = document.querySelector(select.containerOf.menu);
       /* add element to menu */
@@ -142,7 +141,7 @@
       /* toggle active class on element of thisProduct */
         thisProduct.element.classList.toggle('active');
       /* find all active products */
-        const activeProducts = document.querySelectorAll(select.all.menuProductActive);
+        const activeProducts = document.querySelectorAll(select.all.menuProductsActive);
       /* START LOOP: for each active product */
           for(let activeProduct of activeProducts){
         /* START: if the active product isn't the element of thisProduct */
