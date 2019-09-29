@@ -206,7 +206,18 @@
             const optionImages = thisProduct.imageWrapper.querySelectorAll(classImages);
 
             if(optionSelected){
+              if(!thisProduct.params[paramId]){
+                thisProduct.params[paramId] = {
+                  label: param.label,
+                  options: {},
+                };
+              }
+              thisProduct.params[paramId].options[optionId] = option.label;
+
               for(let optionImage of optionImages){
+                if(optionImage){
+                  optionImage.classList.add(classNames.menuProduct.imageVisible);
+                }
                 optionImage.classList.add('active');
               }
             } else {
@@ -237,7 +248,8 @@
 
     addToCart(){
       const thisProduct = this;
-
+      thisProduct.name = thisProduct.data.name;
+      thisProduct.amount = thisProduct.amountWidget.value;
       app.cart.add(thisProduct);
     }
   }
@@ -380,6 +392,11 @@
       const cartElem = document.querySelector(select.containerOf.cart);
       thisApp.cart = new Cart(cartElem);
     },
+    add(menuProduct){
+      //const thisCart = this;
+
+      console.log('adding product', menuProduct);
+    }
   };
 
 app.init();
