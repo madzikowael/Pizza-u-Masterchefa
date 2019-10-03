@@ -303,7 +303,7 @@
       thisCart.getElements(element);
       thisCart.initActions();
 
-      console.log('new Card', thisCart);
+      //console.log('new Card', thisCart);
     }
 
     getElements(element){
@@ -334,10 +334,10 @@
       const generatedDOM = utils.createDOMFromHTML(generatedHTML);
       thisCart.dom.productList.appendChild(generatedDOM);
 
-      console.log('adding product', menuProduct);
+      //console.log('adding product', menuProduct);
 
       thisCart.products.push(new CartProduct(menuProduct,generatedDOM));
-      console.log('thisCart.products', thisCart.products);
+     // console.log('thisCart.products', thisCart.products);
     }
 
   }
@@ -356,8 +356,8 @@
       thisCartProduct.getElements(element);
       thisCartProduct.initAmountWidget();
 
-      console.log('new CartProduct', thisCartProduct)
-      console.log('productData', menuProduct);
+      //console.log('new CartProduct', thisCartProduct)
+      //console.log('productData', menuProduct);
     }
 
     getElements(element){
