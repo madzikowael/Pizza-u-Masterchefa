@@ -321,7 +321,7 @@
       thisCart.renderTotalKeys = ['totalNumber', 'totalPrice', 'subtotalPrice', 'deliveryFee'];
 
       for(let key of thisCart.renderTotalKeys){
-        thisCart.com[key] = thisCart.dom.wrapper.querySelectorAll(select.cart[key])
+        thisCart.dom[key] = thisCart.dom.wrapper.querySelectorAll(select.cart[key])
 ;      }
     }
 
@@ -356,8 +356,8 @@
       thisCart.subtotalPrice = 0;
 
       for(let product of thisCart.products){
-        thisCart.subtotalPrice += thisCart.price;
-        thisCart.totalNumber += thisCart.amount;
+        thisCart.subtotalPrice += product.price;
+        thisCart.totalNumber += product.amount;
         }
 
       thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
