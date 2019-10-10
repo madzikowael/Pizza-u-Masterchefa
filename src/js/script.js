@@ -78,7 +78,7 @@
       url: '//localhost:3131',
       product: 'product',
       order: 'order',
-    }
+    },
   };
 
   const templates = {
@@ -491,13 +491,13 @@
         .then(function(rawResponse){
           return rawResponse.json();
         })
-        .then(function(parasedResponse){
-          console.log('parasedResponse', parasedResponse);
+        .then(function(parsedResponse){
+          console.log('parsedResponse', parsedResponse);
 
           /* save parasedResponse as thisApp.data.products*/
-          parasedResponse = thisApp.data.products;
+          thisApp.data.products = parsedResponse;
           /*execute initMentu method */
-          thisApp.initMenu();
+          thisApp.initMenu(parsedResponse);
         })
 
         console.log('thisApp.data', JSON.stringify(thisApp.data));
