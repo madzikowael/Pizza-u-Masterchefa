@@ -349,7 +349,7 @@
       thisCart.dom.form.addEventListener('submit', function(event){
         event.preventDefault();
 
-      this.Cart.sendOrder();
+      thisCart.sendOrder();
       });
 
     }
@@ -406,6 +406,8 @@
     }
 
     sendOrder(){
+      const thisCart = this;
+
       const url = settings.db.url + '/' + settings.db.order;
 
       const payload = {
@@ -420,6 +422,13 @@
         },
         body: JSON.stringify(payload),
       };
+
+      fetch(url, options)
+        .then(function(response){
+          return response.json();
+        }).then(function(parsedResponse){
+          console.log('parsedResponse', parsedResponse);
+        });
     }
   }
 
