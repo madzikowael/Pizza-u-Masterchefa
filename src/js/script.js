@@ -417,7 +417,6 @@
       const url = settings.db.url + '/' + settings.db.order;
 
       const payload = {
-        address: 'test',
         totalPrice: thisCart.totalPrice,
         phone: thisCart.dom.phone,
         address: thisCart.dom.address,
@@ -517,6 +516,18 @@
         thisCartProduct.remove();
       });
 
+    }
+
+    getData(){
+      const thisCartProduct = this;
+
+      return {
+        id: thisCartProduct.id,
+        amount: thisCartProduct.amount,
+        price: thisCartProduct.price,
+        priceSingle: thisCartProduct.priceSingle,
+        params: thisCartProduct.params,
+      };
     }
   }
   const app = {
