@@ -426,9 +426,9 @@
         products: [],
       };
 
-      for(CartProduct in thisCart.products){
-        thisCart[payload.products] = CartProduct.getData;
-      };
+      for(let product of thisCart.products){
+        payload.products.push(product.getData());
+      }
 
       const options = {
         method: 'POST',
