@@ -329,9 +329,15 @@
       thisCart.renderTotalKeys = ['totalNumber', 'totalPrice', 'subtotalPrice', 'deliveryFee'];
 
       for(let key of thisCart.renderTotalKeys){
-        thisCart.dom[key] = thisCart.dom.wrapper.querySelectorAll(select.cart[key]);     }
+        thisCart.dom[key] = thisCart.dom.wrapper.querySelectorAll(select.cart[key]);
+      }
 
       thisCart.dom.form = thisCart.dom.wrapper.querySelector(select.cart.form);
+
+      thisCart.dom.phone = thisCart.dom.wrapper.querySelector(select.cart.phone);
+
+      thisCart.dom.address = thisCart.dom.wrapper.querySelector(select.cart.address);
+
     }
 
     initActions(){
@@ -413,6 +419,16 @@
       const payload = {
         address: 'test',
         totalPrice: thisCart.totalPrice,
+        phone: thisCart.dom.phone,
+        address: thisCart.dom.address,
+        totalNumber: thisCart.totalNumber,
+        subtotalPrice: thisCart.subtotalPrice,
+        deliveryFee: thisCart.deliveryFee,
+        products: [],
+      };
+
+      for(CartProduct in thisCart.products){
+        thisCart[payload.products] = CartProduct.getData;
       };
 
       const options = {
