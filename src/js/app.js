@@ -1,8 +1,7 @@
-import {settings, select, classNames} from './settings.js';
-import Product from './components/Product.js';
-import Cart from './components/Cart.js';
-import AmountWidget from './components/AmountWidget.js';
-import CartProduct from './components/CartProduct.js';
+import {settings, select, classNames} from '/js/settings.js';
+import Product from '/js/components/Product.js';
+import Cart from '/js/components/Cart.js';
+
 
 const app = {
     initPages: function(){
@@ -28,7 +27,6 @@ const app = {
           link.getAttribute('href') == '#' + pageId
           );
       }
-
     },
 
     initMenu: function(){
