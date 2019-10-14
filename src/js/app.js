@@ -1,6 +1,7 @@
 import {settings, select, classNames} from '/js/settings.js';
 import Product from '/js/components/Product.js';
 import Cart from '/js/components/Cart.js';
+import Booking from '/js/components/Booking.js';
 
 
 const app = {
@@ -93,6 +94,7 @@ const app = {
       thisApp.initPages();
       thisApp.initData();
       thisApp.initCard();
+      thisApp.initBooking();
     },
 
     initCard: function(){
@@ -106,6 +108,14 @@ const app = {
       thisApp.productList.addEventListener('add-to-cart', function(event){
         app.cart.add(event.detail.product);
       });
+    },
+
+    initBooking: function(){
+      const thisApp = this;
+
+      const widgetOfReservation = document.querySelector(select.containerOf.booking);
+      thisApp.widgetOfReservation = new Booking(widgetOfReservation);
+
     },
   };
 
