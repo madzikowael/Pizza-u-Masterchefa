@@ -86,6 +86,12 @@ class Cart{
       thisCart.totalNumber += product.amount;
       }
 
+    if(thisCart.subtotalPrice > 0){
+      thisCart.deliveryFee = 20
+    } else {
+      thisCart.deliveryFee = 0
+    }
+
     thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
 
     console.log('subtotal Price', thisCart.subtotalPrice);
