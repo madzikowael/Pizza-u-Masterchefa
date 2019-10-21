@@ -1,0 +1,133 @@
+.main-page {
+  background-color: white;
+  width: 100%;
+  margin-top: 50px;
+  padding: 50px;
+  position: relative;
+}
+.btn {
+  border: none;
+  font-size: 16px;
+  position: relative;
+
+}
+
+.names {
+  position: absolute;
+  margin-top: o;
+}
+.btn:hover {
+  background-color: brown;
+  opacity: 0.5;
+}
+.two-buttons {
+  position: relative;
+}
+.button-order, .button-book {
+  width: 292px;
+  height: 110px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.button-order:hover {
+  background-color: brown;
+  color: brown;
+}
+
+.button-order {
+  background-image: url('/images/assets/pizza-1.jpg');
+  text-align: center;
+  align-items: center;
+  object-fit: cover;
+
+}
+.button-book {
+  background-image: url('/images/assets/pizza-2.jpg');
+  margin-left: 10px;
+  object-fit: cover;
+}
+.button-opening {
+  width: 600px;
+  height: 110px;
+  background: #F2F2F2;
+  color: #F2F2F2;
+}
+// .col-4 {
+//   margin-left: 0;
+// }
+.card {
+  object-fit: fill;
+  height: 200px;
+  width: 200px;
+  align-items: left;
+  }
+.card img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+.row {
+  margin-top: 80px;
+  flex-direction: flex-row;
+}
+.carousel-item, .carousel-inner, .slide {
+  justify-content: flex;
+  align-items: flex-start;
+  width: 300px;
+  margin-top: 15px;
+  flex-direction: flex-row;
+  padding-left: 20px;
+}
+
+.carousel-indicators{
+  margin-top: 10px;
+  color: grey;
+
+}
+
+// gallery
+.gallery-image {
+  object-fit: cover;
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  background-position: center center;
+  background-size: cover;
+}
+.gallery-image-layer {
+  float: left;
+  width: 183,33px;
+  position: relative;
+}
+
+.gallery-image-layer img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  padding: 0;
+
+}
+.row-first {
+  position: relative;
+
+}
+// .fas {
+//   position: absolute;
+//   font-size: 20px;
+//   // visibility: hidden;
+
+// }
+.fas :hover{
+  // visibility: visible;
+  color: red;
+
+}
+
+.gallery {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+}

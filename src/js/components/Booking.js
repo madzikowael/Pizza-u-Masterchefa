@@ -119,6 +119,26 @@ class Booking{
     }
   }
 
+  bookByClickedTable(){
+    const thisBooking = this;
+
+    let table = settings.booking.tableIdAttribute;
+
+    for(let table of thisBooking.dom.tables){
+      if(thisBooking.table.addEventListener('clicked', function(event){
+        event.preventDefault();
+        table.classList.add('active');
+      })){
+      } else {
+        table.classList.remove('active');
+      }
+      thisBooking.makeBooked();
+      thisBooking.parseData();
+    }
+
+  console.log('bookByClickedTable', bookByClickedTable);
+  }
+
   updateDOM(){
     const thisBooking = this;
 
