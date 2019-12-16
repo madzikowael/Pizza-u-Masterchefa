@@ -4,16 +4,15 @@ import DatePicker from '/js/components/DatePicker.js';
 import HourPicker from '/js/components/HourPicker.js';
 import utils from '/js/utils.js';
 
-class Booking{
-  constructor(element){
+class Booking {
+  constructor(element) {
     const thisBooking = this;
 
     //thisBooking.data = data;
-
     thisBooking.render(element);
     thisBooking.initWidgets();
     thisBooking.getData();
-  };
+  }
 
   getData(){
     const thisBooking = this;
@@ -35,18 +34,19 @@ class Booking{
         settings.db.repeatParam,
         endDateParam,
       ],
-    };
+    },
 
     //console.log('getData params', params);
 
-    const urls = {
+    urls = {
       booking:       settings.db.url + '/' + settings.db.booking
                                      + '?' + params.booking.join('&'),
       eventsCurrent: settings.db.url + '/' + settings.db.event
                                      + '?' + params.eventsCurrent.join('&'),
       eventsRepeat:  settings.db.url + '/' + settings.db.event
                                      + '?' + params.eventsRepeat.join('&'),
-    };
+    }
+
     Promise.all([
       fetch(urls.booking),
       fetch(urls.eventsCurrent),
@@ -76,11 +76,11 @@ class Booking{
     thisBooking.booked = {};
 
     for(let item of bookings){
-      thisBooking.makeBooked(item.date, item,hour, item.duration, item.table);
+      thisBooking.makeBooked(item.date, item.hour, item.duration, item.table);
     }
 
     for(let item of eventsCurrent){
-      thisBooking.makeBooked(item.date, item,hour, item.duration, item.table);
+      thisBooking.makeBooked(item.date, item.hour, item.duration, item.table);
     }
 
     const minDate = thisBooking.datePicker.minDate;
@@ -119,25 +119,25 @@ class Booking{
     }
   }
 
-  bookByClickedTable(){
-    const thisBooking = this;
+  // bookByClickedTable(){
+  //   const thisBooking = this;
 
-    let table = settings.booking.tableIdAttribute;
+  //   let table = settings.booking.tableIdAttribute;
 
-    for(let table of thisBooking.dom.tables){
-      if(thisBooking.table.addEventListener('clicked', function(event){
-        event.preventDefault();
-        table.classList.add('active');
-      })){
-      } else {
-        table.classList.remove('active');
-      }
-      thisBooking.makeBooked();
-      thisBooking.parseData();
-    }
+  //   for(let table of thisBooking.dom.tables){
+  //     if(thisBooking.table.addEventListener('clicked', function(event){
+  //       event.preventDefault();
+  //       table.classList.add('active');
+  //     })){
+  //   } else {
+  //       table.classList.remove('active');
+  //     }
+  //     thisBooking.makeBooked();
+  //     thisBooking.parseData();
+  //   }
 
-  console.log('bookByClickedTable', bookByClickedTable);
-  }
+  // console.log('bookByClickedTable', bookByClickedTable);
+  // }
 
   updateDOM(){
     const thisBooking = this;
@@ -164,13 +164,13 @@ class Booking{
       if(
         !allAvailable
         &&
-        thisBooking.booked[thisBooking.date][thisBooking.hour].includes(tableId) > -1
+        thisBooking.booked[thisBooking.date][thisBooking.hour].includes(tableId)
       ){
         table.classList.add(classNames.booking.tableBooked);
       } else {
         table.classList.remove(classNames.booking.tableBooked);
       }
-      console.log('thisBooking.dom.tables', thisBooking.dom.tables);
+      // console.log('thisBooking.dom.tables', thisBooking.dom.tables);
     }
   }
 
